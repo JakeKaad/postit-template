@@ -14,10 +14,23 @@
 <hr/>
 
 <%= render 'shared/errors', obj: @comment %>
-<h5>Create a comment:</h5>
 <%= form_for [@post, @comment] do |f| %>
-	<%= f.text_area :body %>
+	<%= f.label :body, "Leave a comment" %>
+	<%= f.text_area :body, rows: 3, class: "span4" %>
 	<br/>
 	<%= f.submit "Create comment", class: "btn btn-primary" %>
 <% end %>
+
+<h5>Comments</h5>
+
+<% @post.comments.each do |comment| %>
+	<div class="well span8">
+		<em><%= comment.body %></em>
+		<p>
+			<span class='quiet'>posted by </span><%= comment.user.username %>
+			<small>at <%= comment.created_at %></small>
+		</p>
+	</div>
+<% end %>
+
 
