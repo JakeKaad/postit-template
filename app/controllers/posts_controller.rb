@@ -6,6 +6,7 @@ class PostsController < ApplicationController
   end
 
   def show
+    @comment = Comment.new
   end
 
   def new
@@ -14,21 +15,26 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
+    @post.user = User.first #Change once we have authentication
 
     if @post.save
+      flash[:notice] = "Your post was created."
       redirect_to post_url(@post)
     else
-      render 'posts/new'
+      render 'new'
     end
     
   end
 
-  def edit
-
-  end
+  def edit; end
 
   def update
-
+    if @post.update(post_params)
+      flash[:notice] = "This post was updated"
+      redirect_to post_path(@post)
+    else
+      render 'edit'
+    end
   end
 
   private

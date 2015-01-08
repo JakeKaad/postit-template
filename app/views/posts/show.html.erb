@@ -1,3 +1,7 @@
+<p class='pull-right'>
+	<%= link_to "Edit post", edit_post_path(@post) %>
+</p>
+
 <p>
 	<%= render @post.categories %>
 </p>
@@ -8,3 +12,11 @@
 	<%= @post.description %>
 </p>
 <hr/>
+
+<h5>Create a comment:</h5>
+<%= form_for [@post, @comment] do |f| %>
+	<%= f.text_area :body %>
+	<br/>
+	<%= f.submit "Create comment", class: "btn btn-primary" %>
+<% end %>
+
