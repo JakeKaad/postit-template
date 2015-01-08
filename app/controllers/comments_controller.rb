@@ -9,7 +9,7 @@ class CommentsController < ApplicationController
 			flash[:notice] = "Your comment was created"
 			redirect_to post_path(@post)
 		else
-		  render 'post/show'
+		  render 'posts/show'
 		end
 	end
 end

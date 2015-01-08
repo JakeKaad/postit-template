@@ -6,13 +6,14 @@
 	<%= render @post.categories %>
 </p>
 
-<%= render 'shared/content_title', title: @post.title %>
+<%= render 'shared/content_title', title: (link_to @post.title, fix_url(@post.url)) %>
 
 <p>
 	<%= @post.description %>
 </p>
 <hr/>
 
+<%= render 'shared/errors', obj: @comment %>
 <h5>Create a comment:</h5>
 <%= form_for [@post, @comment] do |f| %>
 	<%= f.text_area :body %>
