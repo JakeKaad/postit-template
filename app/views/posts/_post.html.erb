@@ -5,7 +5,7 @@
 		<p><%= post.description %></p>
 		<p>
 			<span class='quiet'>posted by </span><%= post.user.username %>
-			<small>at <%= post.created_at %></small>
+			<small>at <%= fix_date_time(post.created_at) %></small>
 		</p>
 		<small>
 			<span>
