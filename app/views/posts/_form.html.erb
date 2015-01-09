@@ -1,5 +1,6 @@
 <div class='well'>
 	<%= form_for @post do |f| %>
+	<%= render 'shared/errors', obj: @post %>
 	
 		<div class='control-group'>
 			<%= f.label :title %>

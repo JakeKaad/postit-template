@@ -1,0 +1,5 @@
+<%= render "shared/content_title", title: "#{@user.username}'s posts" %>
+
+<% @user.posts.each do |post| %>
+	<%= render 'posts/post', post: post %>
+<% end %>

@@ -15,8 +15,8 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-    @post.user = User.first #Change once we have authentication
-
+    @post.user = current_user
+    
     if @post.save
       flash[:notice] = "Your post was created."
       redirect_to post_url(@post)

@@ -27,5 +27,4 @@ PostitTemplate::Application.configure do
   # number of complex assets.
   config.assets.debug = true
 
-  Time::DATE_FORMATS[:nice] = "%B %d, '%y at %I:%M%p"
 end
