@@ -2,7 +2,7 @@ class UsersController < ApplicationController
 	before_action :set_user, only: [:show, :edit, :update]
 	
 	def show
-		binding.pry
+		
 	end
 
 	def new
@@ -11,7 +11,6 @@ class UsersController < ApplicationController
 
 	def create
 		@user = User.new(user_params)
-		binding.pry
 
 		if @user.save
 			flash[:notice] = "Profile successfully created"
