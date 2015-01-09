@@ -1,3 +1,9 @@
+<% if @user == current_user %>
+	<p class='pull-right'>
+		<%= link_to "Edit profile", edit_user_path(@user) %>
+	</p>
+<% end %>
+
 <%= render "shared/content_title", title: "#{@user.username}'s posts" %>
 
 <% @user.posts.each do |post| %>
