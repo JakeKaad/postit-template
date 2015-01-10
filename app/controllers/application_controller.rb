@@ -11,5 +11,12 @@ class ApplicationController < ActionController::Base
   	@current_user ||= User.find_by_id(session[:user_id])
   end
 
+  def require_user
+    unless logged_in?
+      redirect_to login_path
+      flash[:error] = "You must be logged in to do that."
+    end
+  end
+
   protect_from_forgery with: :exception
 end

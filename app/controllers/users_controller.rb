@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 	before_action :set_user, only: [:show, :edit, :update]
 	
+	
 	def show
 		
 	end
@@ -14,6 +15,7 @@ class UsersController < ApplicationController
 
 		if @user.save
 			flash[:notice] = "Profile successfully created"
+			session[:user_id] = @user.id
 			redirect_to root_path
 		else
 			render 'new'
