@@ -18,6 +18,6 @@
 		</div>
 
 		<br/>
-		<%= f.submit "Create user profile", class: "btn btn-success" %>
+		<%= f.submit (@user.new_record? ? "Register" : "Update profile"), class: "btn btn-success" %>
 	<% end %>
 </div>
