@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update]
   before_action :require_user, except: [:index, :show]
+  before_action :require_creator, only: [:edit, :update]
 
   def index
   	@posts = Post.all
@@ -46,6 +47,13 @@ class PostsController < ApplicationController
 
     def post_params
       params.require(:post).permit(:title, :url, :description, category_ids: [])
+    end
+
+    def require_creator
+      unless current_user == @post.user
+        flash[:error] = "You can't do that."
+        redirect_to post_path(@post)
+      end
     end
 
 end
