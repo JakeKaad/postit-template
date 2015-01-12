@@ -1,7 +1,7 @@
 <% show_post ||= false %>
 
 <div class='row'>
-	<div class='well span0'>
+	<div class='well span0 text-center'>
 		<% if !logged_in? || already_voted_on?(comment) %>
 			<%= "#{comment.vote_count} votes" %>
 		<% else %>
