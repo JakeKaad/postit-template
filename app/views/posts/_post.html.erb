@@ -4,7 +4,7 @@
 			<i class='icon-arrow-up'></i>
 		<% end %>
 		<br/>
-		<span id="post_<%= post.id %>_votes">
+		<span id="post_<%= post.slug %>_votes">
 			<%= "#{post.vote_count} votes" %>
      </span>
 		<br/>
@@ -18,7 +18,7 @@
 		<h6><%= link_to post.title, fix_url(post.url) %></h6>
 		<p><%= post.description %></p>
 		<p>
-			<span class='quiet'>posted by </span><%= link_to post.user.username, user_path(post.user.id) %>
+			<span class='quiet'>posted by </span><%= link_to post.user.username, user_path(post.user) %>
 			<small>at <%= fix_date_time(post.created_at) %></small>
 		</p>
 		<small>
