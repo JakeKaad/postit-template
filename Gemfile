@@ -13,7 +13,7 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 gem 'bcrypt-ruby', '3.0.0'
-gem 'voteable_jakekaad', '~>0.0.0' path: '/Users/JakeKaad/voteable-gem'
+gem 'voteable_jakekaad', '~>0.0.0'
 
 group :doc do
   gem 'sdoc', require: false
