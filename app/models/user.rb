@@ -13,4 +13,7 @@ class User < ActiveRecord::Base
 
 	sluggable_column :username
 
+	def admin?
+		self.role == 'admin'
+	end
 end
