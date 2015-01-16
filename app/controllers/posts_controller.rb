@@ -1,10 +1,15 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :vote]
   before_action :require_user, except: [:index, :show]
-  before_action :require_creator, only: [:edit, :update]
+  before_action :require_permission, only: [:edit, :update]
 
   def index
   	@posts = Post.all.sort_by{|post| post.vote_count}.reverse
+    respond_to do |format|
+      format.html
+      format.json { render :json => @posts }
+      format.xml { render :xml => @posts }
+    end
   end
 
   def show
@@ -61,11 +66,8 @@ class PostsController < ApplicationController
       params.require(:post).permit(:title, :url, :description, category_ids: [])
     end
 
-    def require_creator
-      unless current_user == @post.user
-        flash[:error] = "You can't do that."
-        redirect_to post_path(@post)
-      end
+    def require_permission
+      access_denied unless current_user == @post.user || current_user.admin?
     end
 
 end
