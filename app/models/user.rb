@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
 
 	validates :username, presence: true, uniqueness: true
 	validates :password, presence: true, length: {minimum: 6}, on: :create
-	validates_confirmation_of :password
+	validates_confirmation_of :password, on: :create
 
 	sluggable_column :username
 
